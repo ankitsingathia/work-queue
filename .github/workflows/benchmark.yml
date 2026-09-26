@@ -18,6 +18,14 @@ jobs:
       - name: Build
         run: make
 
+      # timeout turns a shutdown bug (a thread that never wakes) into a
+      # failed step instead of a job that hangs for six hours.
+      - name: Unit tests
+        run: timeout 120 make test
+
+      - name: Unit tests under ThreadSanitizer
+        run: timeout 600 make test-tsan
+
       - name: Run benchmark
         run: ./wqueue
 
