@@ -1,0 +1,6 @@
+# build outputs
+wqueue
+wqueue_tsan
+wqueue_test
+wqueue_test_tsan
+*.exe
